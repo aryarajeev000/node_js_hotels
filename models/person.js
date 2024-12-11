@@ -11,7 +11,7 @@ const personSchema= new mongoose.Schema({
     },
     work:{
         type:String,
-        enum:['chef','waiter','manager'],
+        enum:['chef','waiter','manager','HR'],
         required:true
     },
     mobile:{
@@ -21,7 +21,7 @@ const personSchema= new mongoose.Schema({
     email:{
         type:String,
         required:true,
-        unque:true
+        unique:true
     },
     address:{
         type:String

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 // Define the MongoDB connection URL
-//const mongoURL = process.env.MONGODB_URL_LOCAL; // Replace "hotels" with any database name you want
-const mongoURL = process.env.MONGODB_URL;
+const mongoURL = process.env.MONGODB_URL_LOCAL; // Replace "hotels" with any database name you want
+//const mongoURL = process.env.MONGODB_URL;
 // Set up MongoDB connection
 mongoose.set('strictQuery', false); // Optional: Suppress deprecation warnings
 mongoose.connect(mongoURL, {

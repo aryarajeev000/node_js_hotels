@@ -54,4 +54,42 @@ router.get('/:workType', async (req, res) => {
     }
 })
 
+
+router.put('/:id', async (req, res) => {
+    try {
+        const personId = req.params.id;
+        const updatedPersonData = req.body;
+        const updatedPerson = await Person.findByIdAndUpdate(personId, updatedPersonData, {
+            new: true, // Return the updated document
+            runValidators: true, // Run Mongoose validation
+        });
+        if (!updatedPerson) {
+            return res.status(404).json({ error: 'Person Not Found' });
+        }
+        // Send the updated person data as a JSON response
+        console.log('data updated succesfully');
+        res.json(updatedPerson);
+    }
+    catch (error) {
+        console.error(error); // Use `console.error` for errors
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const personId = req.params.id;
+        const deletedPerson = await Person.findByIdAndDelete(personId);
+        if (!deletedPerson) {
+            return res.status(404).json({ error: 'Person not found' });
+        }
+        // Send a success message as a JSON response
+        console.log('Person data deleted sucessfully');
+        res.status(308).json({ message: 'Person deleted successfully' });
+
+    } catch (error) {
+        console.error(error); // Use `console.error` for errors
+        res.status(500).json({ error: 'Internal server error' });
+    }
+})
 module.exports = router;
