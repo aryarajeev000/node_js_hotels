@@ -30,7 +30,7 @@ const menuRoutes = require('./routes/menuRoutes');
 const Person = require('./models/person');
 
 //use the routers
-app.use('/person', localmiddleware, personRoutes);
+app.use('/person', personRoutes);
 app.use('/menu', menuRoutes);
 
 // Start the server
